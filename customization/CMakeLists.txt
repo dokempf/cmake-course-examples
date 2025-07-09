@@ -2,9 +2,11 @@ cmake_minimum_required(VERSION 3.24)
 
 project(helloworld)
 
-option(POSITIVE "Whether we have a positive mindset." OFF)
+option(ENABLE_POSITIVE "Whether we have a positive mindset." OFF)
 
 add_executable(helloworld helloworld.cc)
-target_compile_definitions(helloworld PRIVATE POSITIVE)
+if(ENABLE_POSITIVE)
+  target_compile_definitions(helloworld PRIVATE POSITIVE)
+endif()
 
 install(TARGETS helloworld)
